@@ -3,6 +3,7 @@ using System;
 using MagicVilla_VillaAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MagicVilla_VillaAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240121172724_AddVillaNumberToDb")]
+    partial class AddVillaNumberToDb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -70,7 +73,7 @@ namespace MagicVilla_VillaAPI.Migrations
                         {
                             Id = 1,
                             Amenity = "24/7 Concierge Service",
-                            CreatedDate = new DateTime(2024, 1, 21, 18, 52, 11, 537, DateTimeKind.Utc).AddTicks(9620),
+                            CreatedDate = new DateTime(2024, 1, 21, 17, 27, 24, 284, DateTimeKind.Utc).AddTicks(9370),
                             Details = "Luxurious 5-bedroom villa with breathtaking ocean views, private pool, and exclusive amenities.",
                             ImageUrl = "https://dotnetmasteryimages.blob.core.windows.net/bluevillaimages/villa3.jpg",
                             Name = "Royal villa",
@@ -83,7 +86,7 @@ namespace MagicVilla_VillaAPI.Migrations
                         {
                             Id = 2,
                             Amenity = "Private Chef",
-                            CreatedDate = new DateTime(2024, 1, 21, 18, 52, 11, 537, DateTimeKind.Utc).AddTicks(9620),
+                            CreatedDate = new DateTime(2024, 1, 21, 17, 27, 24, 284, DateTimeKind.Utc).AddTicks(9370),
                             Details = "Secluded hilltop villa offering stunning sunset views, infinity pool, and spa services.",
                             ImageUrl = "https://dotnetmasteryimages.blob.core.windows.net/bluevillaimages/villa1.jpg",
                             Name = "Sunset Retreat",
@@ -96,7 +99,7 @@ namespace MagicVilla_VillaAPI.Migrations
                         {
                             Id = 3,
                             Amenity = "Spa Access",
-                            CreatedDate = new DateTime(2024, 1, 21, 18, 52, 11, 537, DateTimeKind.Utc).AddTicks(9650),
+                            CreatedDate = new DateTime(2024, 1, 21, 17, 27, 24, 284, DateTimeKind.Utc).AddTicks(9370),
                             Details = "Charming villa surrounded by lush gardens, featuring a cozy fireplace and outdoor dining area.",
                             ImageUrl = "https://dotnetmasteryimages.blob.core.windows.net/bluevillaimages/villa2.jpg",
                             Name = "Garden Oasis",
@@ -109,7 +112,7 @@ namespace MagicVilla_VillaAPI.Migrations
                         {
                             Id = 4,
                             Amenity = "Water Sports Equipment",
-                            CreatedDate = new DateTime(2024, 1, 21, 18, 52, 11, 537, DateTimeKind.Utc).AddTicks(9650),
+                            CreatedDate = new DateTime(2024, 1, 21, 17, 27, 24, 284, DateTimeKind.Utc).AddTicks(9370),
                             Details = "Modern beachfront villa with floor-to-ceiling windows, Jacuzzi, and direct access to the sandy shores.",
                             ImageUrl = "https://dotnetmasteryimages.blob.core.windows.net/bluevillaimages/villa4.jpg",
                             Name = "Azure Bliss",
@@ -122,7 +125,7 @@ namespace MagicVilla_VillaAPI.Migrations
                         {
                             Id = 5,
                             Amenity = "Hiking Trails Access",
-                            CreatedDate = new DateTime(2024, 1, 21, 18, 52, 11, 537, DateTimeKind.Utc).AddTicks(9650),
+                            CreatedDate = new DateTime(2024, 1, 21, 17, 27, 24, 284, DateTimeKind.Utc).AddTicks(9370),
                             Details = "Rustic mountain retreat featuring a wood-burning fireplace, hot tub, and scenic mountain views.",
                             ImageUrl = "https://dotnetmasteryimages.blob.core.windows.net/bluevillaimages/villa5.jpg",
                             Name = "Mountain Lodge",
@@ -135,7 +138,7 @@ namespace MagicVilla_VillaAPI.Migrations
                         {
                             Id = 6,
                             Amenity = "Private Fishing Dock",
-                            CreatedDate = new DateTime(2024, 1, 21, 18, 52, 11, 537, DateTimeKind.Utc).AddTicks(9650),
+                            CreatedDate = new DateTime(2024, 1, 21, 17, 27, 24, 284, DateTimeKind.Utc).AddTicks(9380),
                             Details = "Tranquil riverside villa surrounded by nature, offering fishing, bird watching, and relaxation.",
                             ImageUrl = "https://aabode.com/images/129/129194.780.png",
                             Name = "Serene Haven",
@@ -148,7 +151,7 @@ namespace MagicVilla_VillaAPI.Migrations
                         {
                             Id = 7,
                             Amenity = "City Tours Package",
-                            CreatedDate = new DateTime(2024, 1, 21, 18, 52, 11, 537, DateTimeKind.Utc).AddTicks(9650),
+                            CreatedDate = new DateTime(2024, 1, 21, 17, 27, 24, 284, DateTimeKind.Utc).AddTicks(9380),
                             Details = "Sleek city villa with modern amenities, rooftop terrace, and proximity to cultural attractions.",
                             ImageUrl = "https://aabode.com/images/129/129196.780.png",
                             Name = "Urban Escape",
@@ -174,25 +177,9 @@ namespace MagicVilla_VillaAPI.Migrations
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int>("VillaID")
-                        .HasColumnType("integer");
-
                     b.HasKey("VillaNo");
 
-                    b.HasIndex("VillaID");
-
                     b.ToTable("VillaNumbers");
-                });
-
-            modelBuilder.Entity("MagicVilla_VillaAPI.Models.VillaNumber", b =>
-                {
-                    b.HasOne("MagicVilla_VillaAPI.Models.Villa", "Villa")
-                        .WithMany()
-                        .HasForeignKey("VillaID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Villa");
                 });
 #pragma warning restore 612, 618
         }
