@@ -15,6 +15,33 @@ public class ApplicationDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Villa>()
+            .Property(p => p.CreatedDate)
+            .HasConversion(
+                v => v.UtcDateTime,
+                v => new DateTimeOffset(v, TimeSpan.Zero)
+            );
+
+        modelBuilder.Entity<Villa>()
+            .Property(p => p.UpdatedDate)
+            .HasConversion(
+                v => v.UtcDateTime,
+                v => new DateTimeOffset(v, TimeSpan.Zero)
+            );
+        modelBuilder.Entity<VillaNumber>()
+            .Property(p => p.CreatedDate)
+            .HasConversion(
+                v => v.UtcDateTime,
+                v => new DateTimeOffset(v, TimeSpan.Zero)
+            );
+
+        modelBuilder.Entity<VillaNumber>()
+            .Property(p => p.UpdatedDate)
+            .HasConversion(
+                v => v.UtcDateTime,
+                v => new DateTimeOffset(v, TimeSpan.Zero)
+            );
+        
         modelBuilder.Entity<Villa>().HasData(
             new Villa()
             {
