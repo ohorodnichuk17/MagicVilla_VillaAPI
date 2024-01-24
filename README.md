@@ -1,0 +1,7 @@
+- ASP NET Core Web API
+- RESTful API's in .NET 7
+- Repository Pattern in API to database using EF
+- Authentication and Authorization in API 
+- .NET Identity to Authenticate API
+- Entity Framework along with code first migrations
+- Dependency Injection in .NET API
