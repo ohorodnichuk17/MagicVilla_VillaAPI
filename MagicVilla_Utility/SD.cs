@@ -1,12 +1,14 @@
-﻿namespace MagicVilla_Utility;
-
-public static class SD
+﻿namespace MagicVilla_Utility
 {
-    public enum ApiType
+    public static class SD
     {
-        GET,
-        POST,
-        PUT,
-        DELETE
+        public enum ApiType
+        {
+            GET,
+            POST,
+            PUT,
+            DELETE
+        }
+        public static string SessionToken = "JWTToken";
     }
 }
